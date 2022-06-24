@@ -22,7 +22,31 @@
 
     <groupId>io.github.oitstack</groupId>
     <artifactId>goblin-container-jdbc</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>0.0.1</version>
+    <description>
+        Goblin is a lightweight testing framework.
+    </description>
+    <url>https://github.com/oitstack</url>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/oitstack/goblin-container-jdbc</url>
+        <connection>scm:git:git://github.com/oitstack/goblin-container-jdbc.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/oitstack/goblin-container-jdbc.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>The Goblin Framework</name>
+            <email>goblin@oppo.com</email>
+        </developer>
+    </developers>
     <profiles>
         <profile>
             <id>deploy</id>
@@ -49,7 +73,7 @@
         <dependency>
             <groupId>io.github.oitstack</groupId>
             <artifactId>goblin-core</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>0.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -82,6 +106,22 @@
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>2.9</version>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                            <configuration>
+                                <additionalparam>-Xdoclint:none</additionalparam>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
@@ -123,7 +163,7 @@
                     <extensions>true</extensions>
                     <configuration>
                         <serverId>ossrh</serverId>
-                        <nexusUrl>http://oss.sonatype.org/</nexusUrl>
+                        <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
                         <autoReleaseAfterClose>false</autoReleaseAfterClose>
                     </configuration>
                 </plugin>
@@ -151,6 +191,10 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
