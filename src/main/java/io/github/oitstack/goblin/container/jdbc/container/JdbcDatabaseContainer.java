@@ -221,14 +221,12 @@ public abstract class JdbcDatabaseContainer<SELF extends JdbcDatabaseContainer<S
                     }
 
                     try (Connection connection = createConnection("")) {
-                        try (Statement statement = connection.createStatement()) {
-                            boolean testQueryResult = statement.execute(getTestQueryCmd());
-                            if (testQueryResult) {
-                                break;
-                            }
-                        } catch (Exception ex) {
-                            throw ex;
+
+                        boolean testQueryResult = connection.createStatement().execute(getTestQueryCmd());
+                        if (testQueryResult) {
+                            break;
                         }
+
                     }
                 } catch (DriverNotFoundException e) {
                     LOGGER.info("no driver found.", e);
